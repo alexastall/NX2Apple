@@ -1598,6 +1598,7 @@ class MainWindow(QMainWindow):
             [
                 ('shared', self.m.t('shell.ipaShared')),
                 ('oneGame', self.m.t('shell.ipaOneGame')),
+                ('framework', self.m.t('shell.ipaFramework')),
             ],
             selected=self.m.ipa_kind,
         )
@@ -1754,24 +1755,29 @@ class MainWindow(QMainWindow):
             [
                 ('shared', self.m.t('shell.ipaShared')),
                 ('oneGame', self.m.t('shell.ipaOneGame')),
+                ('framework', self.m.t('shell.ipaFramework')),
             ],
             selected=self.m.ipa_kind,
         )
         one = self.m.ipa_kind == 'oneGame'
-        self.ipa_kind_note.setText(self.m.t('shell.ipaOneGameNote' if one else 'shell.ipaSharedNote'))
-        self.step1_title.setText('①  ' + self.m.t('shell.step1Title'))
-        self.step1_sub.setText(self.m.t('shell.oneGameSub' if one else 'shell.step1Sub'))
+        fw = self.m.ipa_kind == 'framework'
+        note_key = 'shell.ipaOneGameNote' if one else ('shell.ipaFrameworkNote' if fw else 'shell.ipaSharedNote')
+        self.ipa_kind_note.setText(self.m.t(note_key))
+        self.step1_title.setText('①  ' + self.m.t('shell.frameworkStep1Title' if fw else 'shell.step1Title'))
+        s1_sub_key = 'shell.oneGameSub' if one else ('shell.frameworkStep1Sub' if fw else 'shell.step1Sub')
+        self.step1_sub.setText(self.m.t(s1_sub_key))
         ipa_p = self._effective_ipa_path()
         has_ipa = bool(ipa_p and os.path.exists(ipa_p))
         built_games = (
             self.m.built_shell_games()
-            if not one and hasattr(self.m, 'built_shell_games')
+            if not one and not fw and hasattr(self.m, 'built_shell_games')
             else []
         )
         built_count = len(built_games)
         has_built_shell = built_count > 0
         can_repack = (
             not one
+            and not fw
             and hasattr(self.m, 'can_export_built_games')
             and bool(self.m.can_export_built_games())
         )
@@ -1786,8 +1792,9 @@ class MainWindow(QMainWindow):
         self.step1_reveal_btn.setText(self.m.t('shell.showInFinder'))
         self.step1_reveal_btn.setToolTip(self.m.t('msg.ipaAt', ipa_p) if has_ipa else '')
         self.step1_reveal_btn.setVisible(has_ipa)
-        self.step2_title.setText('②  ' + self.m.t('shell.step2Title'))
-        self.step2_sub.setText(self.m.t('shell.oneGameStep2Sub' if one else 'shell.step2Sub'))
+        self.step2_title.setText('②  ' + self.m.t('shell.frameworkStep2Title' if fw else 'shell.step2Title'))
+        s2_sub_key = 'shell.oneGameStep2Sub' if one else ('shell.frameworkStep2Sub' if fw else 'shell.step2Sub')
+        self.step2_sub.setText(self.m.t(s2_sub_key))
         self.step3_title.setText('③  ' + self.m.t('shell.step3Title') + ' · ' + self.m.t('shell.whereDrive'))
         self.drive_path_lbl.setText(self._drive_folder or self.m.t('shell.driveNone'))
         self.step3_open_romfs_btn.setText(self.m.t('shell.showInFinder'))
@@ -3176,7 +3183,7 @@ class MainWindow(QMainWindow):
         self.target_group.setEnabled(not running)
         self.ipa_kind_seg.setEnabled(not running)
         # A previous export can still be revealed or copied to a drive.
-        self.install_group.setVisible(expanded or os.path.isfile(self._effective_ipa_path())
+        self.install_group.setVisible(expanded or os.path.exists(self._effective_ipa_path())
                                       or os.path.isdir(self._effective_archive_path()))
         setup_needed = not self.m.repo_ok or (self.m.deps_checked and not self.m.all_deps_ok)
         self.setup_hint_card.setVisible(expanded and setup_needed)
