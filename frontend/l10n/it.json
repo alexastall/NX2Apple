@@ -2336,6 +2336,8 @@
   "update.pillHelp": "Scopri le novità di questa release e scaricala.",
   "update.readOnlyHint": "Questa copia non può aggiornarsi dove si trova. Prima sposta NX2Apple.app in Applicazioni.",
   "update.title": "È disponibile una nuova versione",
+  "widescreen.badge": "Schermo intero",
+  "widescreen.help": "Si adatta ai formati a schermo intero e ultrawide.",
   "xcodeChoice.choose": "Scegli Xcode…",
   "xcodeChoice.finishSetup": "Completa la configurazione nell’Xcode selezionato, poi fai clic su Riprova.",
   "xcodeChoice.invalid": "Scegli un’app Xcode che contenga gli strumenti per sviluppatori.",

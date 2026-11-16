@@ -2337,6 +2337,8 @@
   "update.pillHelp": "Was diese Version ändert und sie laden.",
   "update.readOnlyHint": "Diese Kopie kann sich nicht dort aktualisieren. Lege NX2Apple.app zuerst in Programme.",
   "update.title": "Eine neue Version ist da",
+  "widescreen.badge": "Vollbild",
+  "widescreen.help": "Passt sich an Vollbild- und Breitbild-Seitenverhältnisse an.",
   "xcodeChoice.choose": "Xcode auswählen…",
   "xcodeChoice.finishSetup": "Schließe die Einrichtung im ausgewählten Xcode ab und klicke dann auf „Erneut versuchen“.",
   "xcodeChoice.invalid": "Wähle eine Xcode-App mit den Entwicklerwerkzeugen aus.",

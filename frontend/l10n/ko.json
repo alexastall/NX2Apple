@@ -2336,6 +2336,8 @@
   "update.pillHelp": "이 릴리스의 변경 사항을 보고 다운로드하세요.",
   "update.readOnlyHint": "이 사본은 현재 위치에서 업데이트할 수 없습니다. 먼저 NX2Apple.app을 응용 프로그램 폴더로 옮기세요.",
   "update.title": "새 버전이 나왔습니다",
+  "widescreen.badge": "전체 화면",
+  "widescreen.help": "전체 화면 및 와이드 디스플레이 화면 비율에 맞춰 표시합니다.",
   "xcodeChoice.choose": "Xcode 선택…",
   "xcodeChoice.finishSetup": "선택한 Xcode에서 설정을 마친 뒤 다시 시도를 누르세요.",
   "xcodeChoice.invalid": "개발자 도구가 들어 있는 Xcode 앱을 고르세요.",

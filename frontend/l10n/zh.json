@@ -2336,6 +2336,8 @@
   "update.pillHelp": "查看这个版本更新了什么，并下载。",
   "update.readOnlyHint": "这个副本所在的位置无法自我更新。把 NX2Apple.app 移到「应用程序」文件夹后再更新。",
   "update.title": "有新版本可用",
+  "widescreen.badge": "全面屏",
+  "widescreen.help": "支持适配全面屏与宽屏显示比例。",
   "xcodeChoice.choose": "选择 Xcode…",
   "xcodeChoice.finishSetup": "请在所选的 Xcode 中完成配置，然后点「重试」。",
   "xcodeChoice.invalid": "请选择包含开发工具的 Xcode 应用。",
